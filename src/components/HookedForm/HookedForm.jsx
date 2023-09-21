@@ -1,16 +1,25 @@
+import useInput from '../Hooks/useInputState';
+
 const HookedForm = () => {
+	const nameFieldState = useInput('imran');
+	const emailFieldState = useInput();
+	const passFieldState = useInput();
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		console.log('Name: ', nameFieldState.value);
+		console.log('Email: ', emailFieldState.value);
+		console.log('Pass: ', passFieldState.value);
 	};
 
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<input type="text" name="name" />
+				<input {...nameFieldState} type="text" name="name" />
 				<br />
-				<input type="email" name="email" id="" />
+				<input {...emailFieldState} type="email" name="email" id="" />
 				<br />
-				<input type="text" name="phone" />
+				<input {...passFieldState} type="password" name="password" />
 				<br />
 				<input type="submit" value="Submit" />
 			</form>
